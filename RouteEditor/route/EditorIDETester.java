@@ -9,7 +9,8 @@ public class EditorIDETester {
 		String rte3 = "JACCC2 DCT KELLN Q56 KIWII DCT WAVES CAPSS3";
 		String rte4 = "JACCC2 DCT KELLN Q56 KIWII N13453893985 WAVES CAPSS3";
 		String rte5 = "POUNC2.STEIT.MLU.LFK.J27.SAT J21 LRD J22 NLD UJ11 MTY UJ81 SLM";
-		EditorIDETester frame = new EditorIDETester(rte5);
+		String rte6 = "KATL.VRSTY2.MCN  AMG CRG OMN HILEY.HILEY7  ..KMIA";
+		EditorIDETester frame = new EditorIDETester(rte6);
 	}
   
 	public EditorIDETester(String rte) 
@@ -21,15 +22,15 @@ public class EditorIDETester {
         badRoute.replaceAll(".", " ");
         while (badRoute.indexOf("DCT ") != -1 || timeOut >= 150) 
         {
-          int index = badRoute.indexOf("DCT ");
-          String beg = badRoute.substring(0, index);
-          String end = "";
-          if (index + 4 < badRoute.length())
-          {
-            end = badRoute.substring(index + 4); 
-          }
-          badRoute = String.valueOf(beg) + end;
-          timeOut++;
+        	int index = badRoute.indexOf("DCT ");
+        	String beg = badRoute.substring(0, index);
+        	String end = "";
+        	if (index + 4 < badRoute.length())
+        	{
+        		end = badRoute.substring(index + 4); 
+        	}
+        	badRoute = String.valueOf(beg) + end;
+        	timeOut++;
         } 
 	    if (badRoute.substring(badRoute.length() - 3).equals("DCT"))
 	    {
@@ -60,43 +61,50 @@ public class EditorIDETester {
 	          }
 	          badRoute = String.valueOf(beg) + end;
 	          timeOut++;
-	        } 
-	        if (badRoute.charAt(0) == 'N' && Character.isDigit(badRoute.charAt(1))) 
-	        {
-	              int ind = 1;
-	              timeOut = 0;
-	              while (badRoute.charAt(ind) != ' ' || timeOut >= 150) 
-	              {
-	            	  ind++;
-	            	  timeOut++;
-	              } 
-	              badRoute = badRoute.substring(ind + 1);
-	        } 
-	        if (timeOut >= 150)
-	        {
-	        	issue = true;
-	            timeOut = 0;
-	        }
-	        while (badRoute.indexOf('.') != -1 && timeOut < 150) 
-	        {
-	        	badRoute = badRoute.replace(".", " ");
-	            timeOut++;
-	            System.out.println("Fuck");
-	        } 
-	        if (timeOut >= 150)
-	        {
-	        	System.out.println("wtf");
-	        	issue = true; 
-	        }
-	        	
-	        if (issue) 
-	        {
-	        	System.out.println("Error Occured during parsing");
-	        } 
-	        else 
-	        {
-	        	System.out.println(badRoute);
-	        }
-	}
-        
+	    } 
+	    if (badRoute.charAt(0) == 'N' && Character.isDigit(badRoute.charAt(1))) 
+	    {
+	          int ind = 1;
+	          timeOut = 0;
+	          while (badRoute.charAt(ind) != ' ' || timeOut >= 150) 
+	          {
+	        	  ind++;
+	        	  timeOut++;
+	          } 
+	          badRoute = badRoute.substring(ind + 1);
+	    } 
+	    if (timeOut >= 150)
+	    {
+	    	issue = true;
+	        timeOut = 0;
+	    }
+	    while (badRoute.indexOf('.') != -1 && timeOut < 150) 
+	    {
+	     	badRoute = badRoute.replace(".", " ");
+	        timeOut++;
+	    }
+	    if (timeOut >= 150)
+	    {
+	    	issue = true;
+	        timeOut = 0;
+	    }
+	    while (badRoute.contains("  ") && timeOut < 150)
+	    {
+	        badRoute = badRoute.replaceAll("  ", " ");
+	        timeOut++;
+	    }
+	    if (timeOut >= 150)
+	    {
+	    	issue = true; 
+	    }
+	    	
+	    if (issue) 
+	    {
+	    	System.out.println("Error Occured during parsing");
+	    } 
+	    else 
+	    {
+	      	System.out.println(badRoute);
+	    }
+	}    
 }
