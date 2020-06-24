@@ -21,6 +21,7 @@ public class RouteEditor extends JFrame {
 	private JPanel panel;
   
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		RouteEditor frame = new RouteEditor();
 	}
   
@@ -106,7 +107,7 @@ public class RouteEditor extends JFrame {
 	            	issue = true; 
 		            timeOut = 0;
 		            while (badRoute.indexOf(".") != -1 || timeOut >= 150) {
-		            	badRoute.replace('.', ' ');
+		            	badRoute = badRoute.replace('.', ' ');
 		            	timeOut++;
 	            } 
 	            if (timeOut >= 150)
