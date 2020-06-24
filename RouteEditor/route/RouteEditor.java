@@ -26,7 +26,7 @@ public class RouteEditor extends JFrame {
 	}
   
 	public RouteEditor() {
-	    super("Route Editor");
+	    super("VATSIM IFR Route Editor");
 	    this.panel = new JPanel();
 	    setDefaultCloseOperation(3);
 	    setLayout(new BorderLayout());
