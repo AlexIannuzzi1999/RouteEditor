@@ -64,7 +64,9 @@ public class RouteEditor extends JFrame {
 	            String badRoute = route.getText();
 	            boolean issue = false;
 	            int timeOut = 0;
-	            badRoute.replaceAll(".", " ");
+	            
+	            
+	            
 	            while (badRoute.indexOf("DCT ") != -1 || timeOut >= 150) 
 	            {
 	            	int index = badRoute.indexOf("DCT ");
@@ -142,13 +144,29 @@ public class RouteEditor extends JFrame {
 	    	    {
 	    	    	issue = true; 
 	    	    }
-	    	    	
 	    	    if (issue) 
 	    	    {
 	    	    	System.out.println("Error Occured during parsing");
 	    	    }
 	    	    else 
 	    	    {
+	    	    	//eliminates the ICAO codes in the route
+		            if (badRoute.length() > 4 && badRoute.split(" ")[0].length() == 4)
+		            {
+		            	badRoute = badRoute.substring(5);
+		            }
+		            if (badRoute.length() > 4 
+		            		&& badRoute.split(" ")[badRoute.split(" ").length - 1].length() == 4)
+		            {
+		            	String ans = "";
+		            	String[] arr = badRoute.split(" ");
+		            	for (int j = 0; j < arr.length - 1; j++)
+		            	{
+		            		ans += arr[j];
+		            		ans += " ";
+		            	}
+		            	badRoute = ans;
+		            }
 	            	output.append(badRoute);
 	            	StringSelection goodRoute = 
 	            			new StringSelection(badRoute);

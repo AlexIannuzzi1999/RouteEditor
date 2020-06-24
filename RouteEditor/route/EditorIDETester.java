@@ -104,6 +104,23 @@ public class EditorIDETester {
 	    } 
 	    else 
 	    {
+	    	//eliminates the ICAO codes in the route
+            if (badRoute.length() > 4 && badRoute.split(" ")[0].length() == 4)
+            {
+            	badRoute = badRoute.substring(5);
+            }
+            if (badRoute.length() > 4 
+            		&& badRoute.split(" ")[badRoute.split(" ").length - 1].length() == 4)
+            {
+            	String ans = "";
+            	String[] arr = badRoute.split(" ");
+            	for (int j = 0; j < arr.length - 1; j++)
+            	{
+            		ans += arr[j];
+            		ans += " ";
+            	}
+            	badRoute = ans;
+            }
 	      	System.out.println(badRoute);
 	    }
 	}    
