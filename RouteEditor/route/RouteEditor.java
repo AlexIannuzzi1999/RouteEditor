@@ -106,9 +106,21 @@ public class RouteEditor extends JFrame {
 	    	          {
 	    	        	  end = badRoute.substring(count); 
 	    	          }
+	    	          Exception excep = null;
+	    	          try
+	    	          {
+	    	        	  int number = Integer.parseInt(end);
+	    	          }
+	    	          catch (Exception e)
+	    	          {
+	    	        	  excep = e;
+	    	          }
+	    	          if (excep == null)
+	    	          {
+	    	        	  end = "";
+	    	          }
 	    	          badRoute = String.valueOf(beg) + end;
 	    	          timeOut++;
-	    	    } 
 	    	    if (badRoute.charAt(0) == 'N' && Character.isDigit(badRoute.charAt(1))) 
 	    	    {
 	    	          int ind = 1;
