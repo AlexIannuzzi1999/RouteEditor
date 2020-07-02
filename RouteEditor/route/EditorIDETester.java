@@ -112,7 +112,6 @@ public class EditorIDETester {
 	    {
 	    	issue = true; 
 	    }
-	    	
 	    if (issue) 
 	    {
 	    	System.out.println("Error Occured during parsing");
