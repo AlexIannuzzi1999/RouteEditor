@@ -10,7 +10,8 @@ public class EditorIDETester {
 		String rte4 = "JACCC2 DCT KELLN Q56 KIWII N13453893985 WAVES CAPSS3";
 		String rte5 = "POUNC2.STEIT.MLU.LFK.J27.SAT J21 LRD J22 NLD UJ11 MTY UJ81 SLM";
 		String rte6 = "KATL.VRSTY2.MCN  AMG CRG OMN HILEY.HILEY7  ..KMIA";
-		EditorIDETester frame = new EditorIDETester(rte6);
+		String rte7 = "KATL/27R VRSTY2.MCN.AMG CRG OMN  HILEY HILEY7 KMIA/09";
+		EditorIDETester frame = new EditorIDETester(rte7);
 	}
   
 	public EditorIDETester(String rte) 
@@ -36,9 +37,23 @@ public class EditorIDETester {
 	    {
 	    	badRoute = badRoute.substring(0, badRoute.length() - 3); 
 	    }
+//	    if (timeOut >= 150)
+//	    {
+//	    	issue = true; 
+//	    }
+//	    timeOut = 0;
+//	    
+//	    if (badRoute.substring(0, badRoute.indexOf(" ")).contains("/"))
+//	    {
+//	    	
+//	    }
+	    
+	    
+	    
+	    
 	    if (timeOut >= 150)
 	    {
-	    	issue = true; 
+	    	issue = true;
 	    }
 	    timeOut = 0;
 	    while (badRoute.indexOf("/") != -1 || timeOut >= 150) 
@@ -58,6 +73,19 @@ public class EditorIDETester {
 	          if (count < badRoute.length())
 	          {
 	        	  end = badRoute.substring(count); 
+	          }
+	          Exception excep = null;
+	          try
+	          {
+	        	  int number = Integer.parseInt(end);
+	          }
+	          catch (Exception e)
+	          {
+	        	  excep = e;
+	          }
+	          if (excep == null)
+	          {
+	        	  end = "";
 	          }
 	          badRoute = String.valueOf(beg) + end;
 	          timeOut++;
