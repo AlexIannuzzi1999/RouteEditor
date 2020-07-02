@@ -37,19 +37,6 @@ public class EditorIDETester {
 	    {
 	    	badRoute = badRoute.substring(0, badRoute.length() - 3); 
 	    }
-//	    if (timeOut >= 150)
-//	    {
-//	    	issue = true; 
-//	    }
-//	    timeOut = 0;
-//	    
-//	    if (badRoute.substring(0, badRoute.indexOf(" ")).contains("/"))
-//	    {
-//	    	
-//	    }
-	    
-	    
-	    
 	    
 	    if (timeOut >= 150)
 	    {
