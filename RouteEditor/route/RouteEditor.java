@@ -121,6 +121,7 @@ public class RouteEditor extends JFrame {
 	    	          }
 	    	          badRoute = String.valueOf(beg) + end;
 	    	          timeOut++;
+	    	    }
 	    	    if (badRoute.charAt(0) == 'N' && Character.isDigit(badRoute.charAt(1))) 
 	    	    {
 	    	          int ind = 1;
